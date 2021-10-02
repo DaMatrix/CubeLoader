@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.UUID;
 
+import cursedflames.cubeloader.CubeLoader;
 import cursedflames.cubeloader.chunkloading.ChunkloaderManager;
 import cursedflames.cubeloader.chunkloading.ChunkloaderPos;
 import cursedflames.cubeloader.chunkloading.PlayerChunkloaders;
@@ -97,8 +98,10 @@ public class TileCubeLoader extends GenericTileEntity
 	public void updateCubeLoading(boolean worldLoad) {
 		if (!world.isRemote) {
 			// TODO add non-cubic world compatibility
-			if (!(this.world instanceof ICubicWorld))
+			if (!(this.world instanceof ICubicWorld) || !((ICubicWorld) this.world).isCubicWorld()) {
+				CubeLoader.logger.error("cube loader in non-cubic dimension: {}", this.world.provider.getDimension());
 				return;
+			}
 			for (Iterator<TicketList> iter = ticketLists.iterator(); iter.hasNext();) {
 				TicketList tickets = iter.next();
 				if (tickets.contains(this)) {

@@ -3,7 +3,7 @@ buildscript {
         jcenter()
         maven { url = "http://files.minecraftforge.net/maven" }
 		maven {
-            url = "http://repo.spongepowered.org/maven"
+            url = "https://repo.spongepowered.org/maven"
         }
     }
     dependencies {
@@ -15,7 +15,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'java'
 
 
-version = "1.12.2-0.0.5"
+version = "1.12.2-0.0.6-pork-infinite-loading-fix"
 group = "cursedflames.cubeloader" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "CubeLoader"
 
@@ -25,7 +25,7 @@ compileJava {
 }
 
 minecraft {
-    version = "1.12.2-14.23.3.2658"
+    version = "1.12.2-14.23.3.2691"
     if (file("../run").exists()) {
 		runDir = "../run/assets"
 	} else {
@@ -44,7 +44,7 @@ minecraft {
 
 repositories {
 	maven { url = "https://oss.sonatype.org/content/repositories/public/" }
-	maven { url = "http://repo.spongepowered.org/maven" }
+	maven { url = "https://repo.spongepowered.org/maven" }
 }
 
 dependencies {

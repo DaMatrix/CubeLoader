@@ -42,12 +42,13 @@ public class PlayerChunkloaders {
 	}
 
 	public void reloadChunkloaders() {
-		chunkloaders.forEach(pos -> {
+		chunkloaders.removeIf(pos -> {
 			TileCubeLoader te = pos.getCubeLoader(true, true);
 //			CubeLoader.logger.info(te);
 			if (te!=null) {
 				te.updateCubeLoading(true);
 			}
+			return te == null;
 		});
 	}
 
